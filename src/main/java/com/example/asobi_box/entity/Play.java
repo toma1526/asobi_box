@@ -20,14 +20,20 @@ public class Play {
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "name")
-	private String name;
+	@Column(name = "title")
+	private String title;
 
 	@Column(name = "description")
 	private String description;
 
-	@Column(name = "capacity")
-	private Integer capacity;
+	@Column(name = "min_number")
+	private Integer min_number;
+
+	@Column(name = "max_number")
+	private Integer max_number;
+
+	@Column(name = "category")
+	private String category;
 
 	@Column(name = "created_at", insertable = false, updatable = false)
 	private Timestamp createdAt;
