@@ -11,10 +11,10 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "houses")
+@Table(name = "plays")
 @Data
 
-public class House {
+public class Play {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
