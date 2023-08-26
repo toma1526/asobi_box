@@ -1,0 +1,3 @@
+INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (1, 'test_title1', 'test_description1', 1,5,'外');
+INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (2, 'test_title2', 'test_description2', 1,5,'外');
+INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (3, 'test_title3', 'test_description3', 1,5,'外');
