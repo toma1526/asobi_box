@@ -20,9 +20,8 @@
         <div class="asobi_box-wrapper">
             <!-- ヘッダー -->
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm asobi_box-navbar">
-                <div class="container asobi_box-container">
-                    <a class="navbar-brand" th:href="@{/}">                                             
-                    </a>                                                                    
+                <div class="container samuraitravel-container">
+                    <a class="navbar-brand" th:href="@{/}"></a>                                                                    
                 </div>
             </nav>
             
@@ -41,15 +40,15 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">タイトル</th>
+                                        <th scope="col">遊び名</th>
                                         <th scope="col">最低人数</th>
                                         <th scope="col">最高人数</th>
-                                        <th scope="col">カテゴリー</th>
+                                        <th scope="col">場所</th>
                                         <th scope="col"></th>                                        
                                     </tr>
                                 </thead>   
                                 <tbody>                                                     
-                                    <tr th:each="play : ${plays}">
+                                    <tr th:each="play: ${plays}">
                                         <td th:text="${play.getId()}"></td>
                                         <td th:text="${play.getTitle()}"></td>
                                         <td th:text="${play.getMin_Number()}"></td>
