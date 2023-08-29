@@ -27,10 +27,10 @@ public class Play {
 	private String description;
 
 	@Column(name = "min_number")
-	private Integer min_number;
+	private Integer minNumber;
 
 	@Column(name = "max_number")
-	private Integer max_number;
+	private Integer maxNumber;
 
 	@Column(name = "category")
 	private String category;
