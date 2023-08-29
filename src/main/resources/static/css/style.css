@@ -48,6 +48,19 @@ footer {
   opacity: 0.8;   
 }
 
+.asobi_box-page-link {
+   color: #5196a6;
+ }
+ 
+ .asobi_box-page-link:hover {
+   color: #407784;
+ }
+ 
+ .asobi_box-active {
+   background-color: #5196a6 !important;
+   border-color: #5196a6 !important;
+ }
+
 @media screen and (min-width: 1400px) {
   .asobi_box-container {
     max-width: 1200px;

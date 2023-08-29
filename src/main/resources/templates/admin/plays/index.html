@@ -32,7 +32,13 @@
                             
                             <h1 class="mb-4 text-center">遊び一覧</h1>   
                             
-                            <div class="d-flex justify-content-end">                                
+                             <div class="d-flex justify-content-between align-items-end flex-wrap">
+                                 <form method="get" th:action="@{/admin/plays}" class="mb-3">
+                                     <div class="input-group">
+                                         <input type="text" class="form-control" name="keyword" th:value="${keyword}" placeholder="遊び名">
+                                         <button type="submit" class="btn text-white shadow-sm asobi_box-btn">検索</button> 
+                                     </div>               
+                                 </form>                                        
                                 <a href="#" class="btn text-white shadow-sm mb-3 asobi_box-btn">登録</a>
                             </div>                                                          
                             
@@ -48,7 +54,7 @@
                                     </tr>
                                 </thead>   
                                 <tbody>                                                     
-                                    <tr th:each="play: ${plays}">
+                                    <tr th:each="play : ${playPage}">
                                         <td th:text="${play.getId()}"></td>
                                         <td th:text="${play.getTitle()}"></td>
                                         <td th:text="${play.getMinNumber()}"></td>
@@ -57,7 +63,27 @@
                                         <td><a href="#">詳細</a></td>                                                                                
                                     </tr>                                      
                                 </tbody>
-                            </table>                                       
+                            </table>  
+                            
+                                 <!-- ページネーション -->
+                             <div th:if="${playPage.getTotalPages() > 1}" class="d-flex justify-content-center">
+                                 <nav aria-label="遊び一覧ページ">
+                                     <ul class="pagination">
+                                         <li class="page-item">
+                                             <span th:if="${playPage.isFirst()}" class="page-link disabled">前</span>
+                                             <a th:unless="${playPage.isFirst()}" th:href="@{/admin/plays(page = ${playPage.getNumber() - 1}, keyword = ${keyword})}" class="page-link asobi_box-page-link">前</a>
+                                         </li>
+                                         <li th:each="i : ${#numbers.sequence(0, playPage.getTotalPages() - 1)}" class="page-item">
+                                             <span th:if="${i == playPage.getNumber()}" class="page-link active asobi_box-active" th:text="${i + 1}"></span>
+                                             <a th:unless="${i == playPage.getNumber()}" th:href="@{/admin/plays(page = ${i}, keyword = ${keyword})}" class="page-link asobi_box-page-link" th:text="${i + 1}"></a>
+                                         </li>
+                                         <li class="page-item">                        
+                                             <span th:if="${playPage.isLast()}" class="page-link disabled">次</span>
+                                             <a th:unless="${playPage.isLast()}" th:href="@{/admin/plays(page = ${playPage.getNumber() + 1}, keyword = ${keyword})}" class="page-link asobi_box-page-link">次</a>
+                                         </li>
+                                     </ul>
+                                 </nav> 
+                             </div>                                                         
                         </div>
                     </div>
                 </div>              
