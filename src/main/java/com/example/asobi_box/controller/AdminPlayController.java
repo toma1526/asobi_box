@@ -26,15 +26,22 @@ public class AdminPlayController {
 	public String index(Model model,
 			@PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
 			@RequestParam(name = "keyword", required = false) String keyword) {
-		Page<Play> playPage;
+		Page<Play> titlePage;
 
 		if (keyword != null && !keyword.isEmpty()) {
-			playPage = playRepository.findByNameLike("%" + keyword + "%", pageable);
+			titlePage = playRepository.findByTitleLike("%" + keyword + "%", pageable);
 		} else {
-			playPage = playRepository.findAll(pageable);
+			titlePage = playRepository.findAll(pageable);
+		}
+		Page<Play> categoryPage;
+
+		if (keyword != null && !keyword.isEmpty()) {
+			categoryPage = playRepository.findByCategoryLike("%" + keyword + "%", pageable);
+		} else {
+			categoryPage = playRepository.findAll(pageable);
 		}
 
-		model.addAttribute("playPage", playPage);
+		model.addAttribute("playPage", categoryPage);
 		model.addAttribute("keyword", keyword);
 
 		return "admin/plays/index";

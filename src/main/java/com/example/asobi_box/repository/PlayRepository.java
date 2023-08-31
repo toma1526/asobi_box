@@ -7,5 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.asobi_box.entity.Play;
 
 public interface PlayRepository extends JpaRepository<Play, Integer> {
-	public Page<Play> findByNameLike(String keyword, Pageable pageable);
+
+	public Page<Play> findByTitleLike(String keyword, Pageable pageable);
+
+	public Page<Play> findByCategoryLike(String keyword, Pageable pageable);
 }
