@@ -33,17 +33,18 @@ public class AdminPlayController {
 		} else {
 			titlePage = playRepository.findAll(pageable);
 		}
-		Page<Play> categoryPage;
 
+		Page<Play> categoryPage;
 		if (keyword != null && !keyword.isEmpty()) {
 			categoryPage = playRepository.findByCategoryLike("%" + keyword + "%", pageable);
 		} else {
 			categoryPage = playRepository.findAll(pageable);
 		}
-
+		System.out.println(categoryPage);
 		model.addAttribute("playPage", categoryPage);
 		model.addAttribute("keyword", keyword);
 
 		return "admin/plays/index";
+
 	}
 }
