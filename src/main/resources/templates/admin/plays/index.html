@@ -60,7 +60,7 @@
                                         <td th:text="${play.getMinNumber()}"></td>
                                         <td th:text="${play.getMaxNumber()}"></td>
                                         <td th:text="${play.getCategory()}"></td>
-                                        <td><a href="#">詳細</a></td>                                                                                
+                                       <td><a th:href="@{/admin/plays/__${play.getId()}__}">詳細</a></td>                                                                              
                                     </tr>                                      
                                 </tbody>
                             </table>  

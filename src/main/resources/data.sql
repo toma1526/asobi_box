@@ -46,7 +46,7 @@ INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category
 INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (46, '的当て', '1. ゴム鉄砲を使います2. 的に狙って当てます※ゴム鉄砲は人に向けない',1,6,'中');
 INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (47, '⚪︎×クイズ', '1. 先生からお題が出されます2. 正しいと思う人は⚪︎ 間違いだと思う人は×のところにいきます',2,12,'中');
 INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (48, 'リーダーゲーム', '1. 鬼はホワイトボードの後ろに入ります2. 他の子は丸く座りリーダーを決めます3. みんなはリーダーの動きを真似します4. 鬼波紋中に来て誰がリーダーかを見つけます5. わかったら答えます6. 次はリーダーと鬼が交代します※歩き回らず止まって探します※リーダーは見つからないように小さく動きます※おしゃべりはせず、静かに行います',4,12,'中');
-INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (49, 'ワードバスケット', '1. ▫️にひらがなが一つ入ります2. ▫️に入った文字から始まる言葉を考えます3. それが１文字ずつ増えていきます',2,12,'中');
+INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (49, 'ワードバスケット', '1.️にひらがなが一つ入ります　2.️に入った文字から始まる言葉を考えます3. それが１文字ずつ増えていきます',2,12,'中');
 INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (50, '私は誰でしょう', '1. 一人２回やります2. ヒントは並んでいる順番で5人ヒントを出すのを待ちます3. 途中で答えがわかっても待っていてください4. 5人のヒントでもわからないかったときは一人ずつヒントを出してわかったら答えてください',4,12,'中');
 INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (51, 'むっくりクマさん', '**むっくりくまさん　むっくりくまさん****あなのなか****ねむっているよ　ぐーぐー****ねごとをいって　むにゃむにゃ****めをさましたら　めをさましたら****たべられちゃうよ**',4,8,'中');
 INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (52, '一山超えて', '一山超えて　二山超えて　三山のたぬきさんタンタンたぬきさん　遊ぼじゃないか今は　ご飯の真っ最中おかずはなぁーに梅干し　ごっこ一口　ちょうだいいやいやしんぼ',4,8,'中');

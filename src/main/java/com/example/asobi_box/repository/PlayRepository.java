@@ -11,4 +11,5 @@ public interface PlayRepository extends JpaRepository<Play, Integer> {
 	public Page<Play> findByTitleLike(String keyword, Pageable pageable);
 
 	public Page<Play> findBydescriptionLike(String keyword, Pageable pageable);
+
 }

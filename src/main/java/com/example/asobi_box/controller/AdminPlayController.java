@@ -7,6 +7,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -40,11 +41,20 @@ public class AdminPlayController {
 		} else {
 			descriptionPage = playRepository.findAll(pageable);
 		}
-		System.out.println(descriptionPage);
-		model.addAttribute("playPage", descriptionPage);
+
+		model.addAttribute("playPage", titlePage);
 		model.addAttribute("keyword", keyword);
 
 		return "admin/plays/index";
 
+	}
+
+	@GetMapping("/{id}")
+	public String show(@PathVariable(name = "id") Integer id, Model model) {
+		Play play = playRepository.getReferenceById(id);
+
+		model.addAttribute("play", play);
+
+		return "admin/plays/show";
 	}
 }
