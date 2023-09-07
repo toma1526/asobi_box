@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.asobi_box.entity.Play;
+import com.example.asobi_box.form.PlayRegisterForm;
 import com.example.asobi_box.repository.PlayRepository;
 
 @Controller
@@ -27,19 +28,19 @@ public class AdminPlayController {
 	public String index(Model model,
 			@PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
 			@RequestParam(name = "keyword", required = false) String keyword) {
-		Page<Play> titlePage;
-
-		if (keyword != null && !keyword.isEmpty()) {
-			titlePage = playRepository.findByTitleLike("%" + keyword + "%", pageable);
-		} else {
-			titlePage = playRepository.findAll(pageable);
-		}
-
 		Page<Play> descriptionPage;
 		if (keyword != null && !keyword.isEmpty()) {
-			descriptionPage = playRepository.findBydescriptionLike("%" + keyword + "%", pageable);
+			descriptionPage = playRepository.findByDescriptionLike("%" + keyword + "%", pageable);
 		} else {
 			descriptionPage = playRepository.findAll(pageable);
+		}
+
+		Page<Play> titlePage;
+		if (keyword != null && !keyword.isEmpty()) {
+			String query = "%" + keyword + "%";
+			titlePage = playRepository.findByTitleLikeOrDescriptionLike(query, query, pageable);
+		} else {
+			titlePage = playRepository.findAll(pageable);
 		}
 
 		model.addAttribute("playPage", titlePage);
@@ -56,5 +57,11 @@ public class AdminPlayController {
 		model.addAttribute("play", play);
 
 		return "admin/plays/show";
+	}
+
+	@GetMapping("/register")
+	public String register(Model model) {
+		model.addAttribute("playRegisterForm", new PlayRegisterForm());
+		return "admin/plays/register";
 	}
 }
