@@ -28,6 +28,6 @@ public class PlayRegisterForm {
 	private Integer maxNumber;
 
 	@NotBlank(message = "どこで遊ぶかを入れてください。")
-	private String categor;
+	private String category;
 
 }
