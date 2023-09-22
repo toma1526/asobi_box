@@ -9,7 +9,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-
 public class PlayRegisterForm {
 	@NotBlank(message = "遊びの名前を入れてください")
 	private String title;
