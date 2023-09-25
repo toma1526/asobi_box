@@ -3,7 +3,6 @@ package com.example.asobi_box.service;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ import com.example.asobi_box.repository.PlayRepository;
 public class PlayService {
 	private final PlayRepository playRepository;
 
-	public Service(PlayRepository playRepository) {
+	public PlayService(PlayRepository playRepository) {
 		this.playRepository = playRepository;
 	}
 
@@ -26,14 +25,6 @@ public class PlayService {
 	public void create(PlayRegisterForm playRegisterForm) {
 		Play play = new Play();
 		MultipartFile imageFile = playRegisterForm.getImageFile();
-
-		if (!imageFile.isEmpty()) {
-			String imageName = imageFile.getOriginalFilename();
-			String hashedImageName = generateNewFileName(imageName);
-			Path filePath = Paths.get("src/main/resources/static/storage/" + hashedImageName);
-			copyImageFile(imageFile, filePath);
-			play.setImageName(hashedImageName);
-		}
 
 		play.setTitle(playRegisterForm.getTitle());
 		play.setDescription(playRegisterForm.getDescription());

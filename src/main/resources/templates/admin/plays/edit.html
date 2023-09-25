@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <div th:replace="~{fragment :: meta}"></div>   
+             
+        <div th:replace="~{fragment :: styles}"></div>
+        
+        <title>遊び情報編集</title>       
+    </head>
+    <body>
+        <div class="asobi_box-wrapper">
+            <!-- ヘッダー -->
+            <div th:replace="~{fragment :: header}"></div>
+            
+            <main>
+                <div class="container pt-4 pb-5 asobi_box-container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-5 col-lg-6 col-md-8">
+                            <nav class="mb-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                                <ol class="breadcrumb mb-0"> 
+                                    <li class="breadcrumb-item"><a th:href="@{/admin/palys}">遊び一覧</a></li>  
+                                    <li class="breadcrumb-item"><a th:href="@{/admin/plays/__${playEditForm.getId()}__}">遊び詳細</a></li>                                                           
+                                    <li class="breadcrumb-item active" aria-current="page">遊び情報編集</li>
+                                </ol>
+                            </nav> 
+                            
+                            <h1 class="mb-4 text-center">遊び情報編集</h1>         
+                            
+                            <form method="post" th:action="@{/admin/plays/__${playEditForm.getId()}__/update}" th:object="${playEditForm}" enctype="multipart/form-data">   
+                                <input type="hidden" th:field="*{id}">
+                                                                                         
+                                <div class="form-group row mb-3">
+                                     <div class="col-md-4">
+                                         <label for="Title" class="col-form-label text-md-left fw-bold">遊びの名前</label>
+                                     </div>
+                                     <div class="col-md-8">                                    
+                                         <div th:if="${#fields.hasErrors('Title')}" class="text-danger small mb-2" th:errors="*{Title}"></div>                                    
+                                         <input type="text" class="form-control" th:field="*{Title}" autofocus>
+                                     </div>
+                                 </div>
+                                </div>
+                                <div class="form-group row mb-3">
+                                     <div class="col-md-4">
+                                         <label for="Description" class="col-form-label text-md-left fw-bold">説明</label>
+                                     </div>
+                                     <div class="col-md-8">                            
+                                         <div th:if="${#fields.hasErrors('Description')}" class="text-danger small mb-2" th:errors="*{Description}"></div>                                        
+                                         <textarea class="form-control" th:field="*{Description}" cols="30" rows="5"></textarea>
+                                     </div>
+                                 </div>
+                                <div class="form-group row mb-3">
+                                    <div class="col-md-4">
+                                        <label for="MinNumber" class="col-form-label text-md-left fw-bold">最小人数（単位：人）</label>
+                                    </div> 
+                                    <div class="col-md-8">
+                                        <div th:if="${#fields.hasErrors('MinNumber')}" class="text-danger small mb-2" th:errors="*{MinNumber}"></div>
+                                        <input type="number" class="form-control" th:field="*{MinNumber}">                                
+                                    </div>                                    
+                                </div> 
+                                
+                                <div class="form-group row mb-3">
+                                    <div class="col-md-4">
+                                        <label for="MaxNumber" class="col-form-label text-md-left fw-bold">最大人数（単位：人）</label>
+                                    </div> 
+                                    <div class="col-md-8">
+                                        <div th:if="${#fields.hasErrors('MaxNumber')}" class="text-danger small mb-2" th:errors="*{MaxNumber}"></div>
+                                        <input type="number" class="form-control" th:field="*{MaxNumber}">                                
+                                    </div>                                    
+                                </div>                                                                
+                                                                                                                        
+                                <div class="form-group row mb-3">
+                                    <div class="col-md-4">
+                                        <label for="Category" class="col-form-label text-md-left fw-bold">場所</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div th:if="${#fields.hasErrors('Category')}" class="text-danger small mb-2" th:errors="*{Category}"></div>
+                                        <input type="text" class="form-control" th:field="*{Category}">
+                                   </div>
+                                </div>
+                                <div class="form-group d-flex justify-content-center my-4">
+                                    <button type="submit" class="btn text-white shadow-sm w-50 asobi_box-btn">更新</button>
+                                </div>
+                            </form>                                                                         
+                        </div>
+                    </div>
+                </div>                 
+            </main>
+            
+            <!-- フッター -->
+            <div th:replace="~{fragment :: footer}"></div>
+       </div>    
+        
+        <div th:replace="~{fragment :: scripts}"></div>  
+        <script th:src="@{/js/preview.js}"></script>     
+    </body>
+</html>

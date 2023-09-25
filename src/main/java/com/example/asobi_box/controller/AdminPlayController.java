@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.asobi_box.entity.Play;
+import com.example.asobi_box.form.PlayEditForm;
 import com.example.asobi_box.form.PlayRegisterForm;
 import com.example.asobi_box.repository.PlayRepository;
 import com.example.asobi_box.service.PlayService;
@@ -84,5 +85,16 @@ public class AdminPlayController {
 		redirectAttributes.addFlashAttribute("successMessage", "遊びを登録しました。");
 
 		return "redirect:/admin/plays";
+	}
+
+	@GetMapping("/{id}/edit")
+	public String edit(@PathVariable(name = "id") Integer id, Model model) {
+		Play play = playRepository.getReferenceById(id);
+		PlayEditForm playEditForm = new PlayEditForm(play.getId(), play.getTitle(), null, play.getDescription(),
+				play.getMinNumber(), play.getMaxNumber(), play.getCategory());
+
+		model.addAttribute("playEditForm", playEditForm);
+
+		return "admin/plays/edit";
 	}
 }
