@@ -60,9 +60,26 @@ footer {
    background-color: #5196a6 !important;
    border-color: #5196a6 !important;
  }
- .samuraitravel-pre-wrap {
+ .asobi_box-pre-wrap {
    /* 改行文字で行を折り返す */
    white-space: pre-wrap;
+ }
+ 
+ .asobi_box-link-danger {
+     color: #f2594b;
+ }
+ 
+ .asobi_box-link-danger:hover {
+     color: #a63c3c;
+ }
+ 
+ .asobi_box-btn-danger {
+     background-color: #f2594b !important;
+     transition: 0.1s;
+ }
+ 
+ .asobi_box-btn-danger:hover {
+   opacity: 0.8;   
  }
 
 @media screen and (min-width: 1400px) {

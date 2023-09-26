@@ -15,7 +15,7 @@ public class PlayEditForm {
 	private Integer id;
 
 	@NotBlank(message = "遊び名を入れてください。")
-	private String name;
+	private String title;
 
 	private MultipartFile imageFile;
 

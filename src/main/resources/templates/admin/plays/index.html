@@ -37,7 +37,8 @@
                                         <th scope="col">最低人数</th>
                                         <th scope="col">最高人数</th>
                                         <th scope="col">場所</th>
-                                        <th scope="col"></th>                                        
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>                              
                                     </tr>
                                 </thead>   
                                 <tbody>                                                     
@@ -47,7 +48,25 @@
                                         <td th:text="${play.getMinNumber()}"></td>
                                         <td th:text="${play.getMaxNumber()}"></td>
                                         <td th:text="${play.getCategory()}"></td>
-                                       <td><a th:href="@{/admin/plays/__${play.getId()}__}">詳細</a></td>                                                                              
+                                       <td><a th:href="@{/admin/plays/__${play.getId()}__}">詳細</a></td>
+                                       <td><a href="#" class="asobi_box-link-danger" data-bs-toggle="modal" th:data-bs-target="${'#deletePlayModal' + play.getId()}">削除</a></td> 
+                                       
+                                        <!-- 削除用モーダル -->
+                                         <div class="modal fade" th:id="${'deletePlayModal' + play.getId()}" tabindex="-1" th:aria-labelledby="${'deletePlayModalLabel' + play.getId()}">
+                                             <div class="modal-dialog">
+                                                 <div class="modal-content">
+                                                     <div class="modal-header">
+                                                         <h5 class="modal-title" th:id="${'deletePlayModalLabel' + play.getId()}" th:text="${play.getTitle() + 'を削除してもよろしいですか？'}"></h5>
+                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                                                     </div>
+                                                     <div class="modal-footer">
+                                                         <form method="post"th:action="@{/admin/plays/__${play.getId()}__/delete}">
+                                                             <button type="submit" class="btn asobi_box-btn-danger text-white shadow-sm">削除</button>
+                                                         </form>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </div>                                                                                                
                                     </tr>                                      
                                 </tbody>
                             </table>  

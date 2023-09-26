@@ -97,4 +97,26 @@ public class AdminPlayController {
 
 		return "admin/plays/edit";
 	}
+
+	@PostMapping("/{id}/update")
+	public String update(@ModelAttribute @Validated PlayEditForm playEditForm, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes) {
+		if (bindingResult.hasErrors()) {
+			return "admin/plays/edit";
+		}
+
+		playService.update(playEditForm);
+		redirectAttributes.addFlashAttribute("successMessage", "遊び情報を編集しました。");
+
+		return "redirect:/admin/plays";
+	}
+
+	@PostMapping("/{id}/delete")
+	public String delete(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
+		playRepository.deleteById(id);
+
+		redirectAttributes.addFlashAttribute("successMessage", "遊びを削除しました。");
+
+		return "redirect:/admin/plays";
+	}
 }

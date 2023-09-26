@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.asobi_box.entity.Play;
+import com.example.asobi_box.form.PlayEditForm;
 import com.example.asobi_box.form.PlayRegisterForm;
 import com.example.asobi_box.repository.PlayRepository;
 
@@ -42,6 +43,20 @@ public class PlayService {
 		}
 		String hashedFileName = String.join(".", fileNames);
 		return hashedFileName;
+	}
+
+	@Transactional
+	public void update(PlayEditForm playEditForm) {
+		Play play = playRepository.getReferenceById(playEditForm.getId());
+		MultipartFile imageFile = playEditForm.getImageFile();
+
+		play.setTitle(playEditForm.getTitle());
+		play.setDescription(playEditForm.getDescription());
+		play.setMinNumber(playEditForm.getMinNumber());
+		play.setMaxNumber(playEditForm.getMaxNumber());
+		play.setCategory(playEditForm.getCategory());
+
+		playRepository.save(play);
 	}
 
 	// 画像ファイルを指定したファイルにコピーする
