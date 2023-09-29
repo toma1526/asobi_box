@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <!-- meta要素の部品化 -->
         <div th:fragment="meta" th:remove="tag">
@@ -28,7 +28,50 @@
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm asobi_box-navbar">
                 <div class="container asobi_box-container">
                     <a class="navbar-brand" th:href="@{/}">                        
-                    </a>                                                                    
+                    </a>   
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                         <span class="navbar-toggler-icon"></span>
+                     </button>
+                     
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">                                    
+                         <ul class="navbar-nav ms-auto">    
+                             <!-- 未ログインであれば表示する -->
+                             <li class="nav-item" sec:authorize="isAnonymous()">
+                                 <a class="nav-link" th:href="@{/login}">ログイン</a>
+                             </li>                                                      
+                     
+                             <!-- ログイン済みであれば表示する --> 
+                             <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_GENERAL')">
+                                 <a id="navbarDropdownGeneral" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                     <span sec:authentication="principal.user.name"></span>
+                                 </a>
+         
+                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownGeneral">                                                                  
+                                     <a class="dropdown-item asobi_box-dropdown-item" th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                         ログアウト
+                                     </a>
+                                     <form class="d-none" id="logout-form" th:action="@{/logout}" method="post"></form>                                     
+                                 </div>
+                             </li>                       
+                                 
+                             <!-- 管理者であれば表示する -->    
+                             <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+                                 <a id="navbarDropdownAdmin" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                     管理者メニュー
+                                 </a>
+         
+                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownAdmin">                                                                                            
+                                     <a class="dropdown-item asobi_box-dropdown-item" th:href="@{/admin/plays}">遊び一覧</a>                                                                                                     
+                                                               
+                                     <div class="dropdown-divider"></div>
+                                     
+                                     <a class="dropdown-item asobi_box-dropdown-item" th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                         ログアウト
+                                     </a>
+                                     <form class="d-none" id="logout-form" th:action="@{/logout}" method="post"></form> 
+                                 </div>
+                             </li>                           
+                         </ul>                                                                        
                 </div>
             </nav>
         </div>
