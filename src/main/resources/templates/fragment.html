@@ -38,7 +38,10 @@
                              <!-- 未ログインであれば表示する -->
                              <li class="nav-item" sec:authorize="isAnonymous()">
                                  <a class="nav-link" th:href="@{/login}">ログイン</a>
-                             </li>                                                      
+                             </li>        
+                             <li class="nav-item" sec:authorize="isAnonymous()">
+                                 <a class="nav-link" th:href="@{/signup}">会員登録</a>
+                             </li>                                               
                      
                              <!-- ログイン済みであれば表示する --> 
                              <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_GENERAL')">
@@ -47,6 +50,9 @@
                                  </a>
          
                                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownGeneral">                                                                  
+									  <a class="dropdown-item asobi_box-dropdown-item" th:href="@{/user}">会員情報</a>  
+                                     
+                                     <div class="dropdown-divider"></div>
                                      <a class="dropdown-item asobi_box-dropdown-item" th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                          ログアウト
                                      </a>
@@ -61,7 +67,7 @@
                                  </a>
          
                                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownAdmin">                                                                                            
-                                     <a class="dropdown-item asobi_box-dropdown-item" th:href="@{/admin/plays}">遊び一覧</a>                                                                                                     
+                                     <a class="dropdown-item samuraitravel-dropdown-item" th:href="@{/admin/plays}">遊び一覧</a>                                                                                                     
                                                                
                                      <div class="dropdown-divider"></div>
                                      
@@ -71,7 +77,8 @@
                                      <form class="d-none" id="logout-form" th:action="@{/logout}" method="post"></form> 
                                  </div>
                              </li>                           
-                         </ul>                                                                        
+                         </ul>       
+                                                                  
                 </div>
             </nav>
         </div>
