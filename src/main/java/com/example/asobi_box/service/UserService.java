@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.asobi_box.entity.Role;
 import com.example.asobi_box.entity.User;
 import com.example.asobi_box.form.SignupForm;
+import com.example.asobi_box.form.UserEditForm;
 import com.example.asobi_box.repository.RoleRepository;
 import com.example.asobi_box.repository.UserRepository;
 
@@ -40,6 +41,20 @@ public class UserService {
 		return userRepository.save(user);
 	}
 
+	@Transactional
+	public void update(UserEditForm userEditForm) {
+		User user = userRepository.getReferenceById(userEditForm.getId());
+
+		user.setName(userEditForm.getName());
+		user.setFurigana(userEditForm.getFurigana());
+		user.setPostalCode(userEditForm.getPostalCode());
+		user.setAddress(userEditForm.getAddress());
+		user.setPhoneNumber(userEditForm.getPhoneNumber());
+		user.setEmail(userEditForm.getEmail());
+
+		userRepository.save(user);
+	}
+
 	// メールアドレスが登録済みかどうかをチェックする
 	public boolean isEmailRegistered(String email) {
 		User user = userRepository.findByEmail(email);
@@ -49,5 +64,11 @@ public class UserService {
 	// パスワードとパスワード（確認用）の入力値が一致するかどうかをチェックする
 	public boolean isSamePassword(String password, String passwordConfirmation) {
 		return password.equals(passwordConfirmation);
+	}
+
+	// メールアドレスが変更されたかどうかをチェックする
+	public boolean isEmailChanged(UserEditForm userEditForm) {
+		User currentUser = userRepository.getReferenceById(userEditForm.getId());
+		return !userEditForm.getEmail().equals(currentUser.getEmail());
 	}
 }
