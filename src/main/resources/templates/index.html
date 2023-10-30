@@ -1,35 +1,11 @@
 <!DOCTYPE html>
- <html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="https://www.thymeleaf.org">
      <head>
-       <div th:replace="~{fragment :: meta}"></div>   
-              
-         <div th:replace="~{fragment :: styles}"></div> 
+       <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
          <title>ASOBI BOX</title>	
      </head>
      <body>
-         <div class="asobi_box-wrapper">
-             <!-- ヘッダー -->
-             <div th:replace="~{fragment :: header}"></div>
-             
-             <main>
-                 <div class="container pt-4 pb-5 asobi_box-container">
-                     <div th:if="${param.loggedIn}" class="alert alert-info">
-                         ログインしました。
-                     </div>  
-                     
-                     <div th:if="${param.loggedOut}" class="alert alert-info">
-                         ログアウトしました。
-                     </div>
-                      <div th:if="${successMessage}" class="alert alert-info">
-                         <span th:text="${successMessage}"></span>
-                     </div>
-                 </div>
-             </main>
-             
-             <!-- フッター -->
-             <div th:replace="~{fragment :: footer}"></div>
-         </div>    
-         
-         <div th:replace="~{fragment :: scripts}"></div> 
+        <p>Hello, world!</p>
      </body>
  </html>

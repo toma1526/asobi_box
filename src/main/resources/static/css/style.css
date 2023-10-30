@@ -82,9 +82,6 @@ footer {
    opacity: 0.8;   
  }
  
-.asobi_box-dropdown-item:active {
-   background-color: #5196a6;
- }
 @media screen and (min-width: 1400px) {
   .asobi_box-container {
     max-width: 1200px;

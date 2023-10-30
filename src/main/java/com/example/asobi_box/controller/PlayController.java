@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PlayController {
 	@GetMapping("/")
 	public String index() {
-		System.out.println("debug1");
 		return "index";
 	}
 
