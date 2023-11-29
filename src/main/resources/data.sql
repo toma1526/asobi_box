@@ -80,6 +80,5 @@ INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category
 INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (80,'雪玉かくれんぼ','1. 鬼を決めます<br>2. 鬼が10数えている間に他の人は隠れます<br>3. 鬼は隠れている人を見つけたら「〇〇くん、〇〇さん見つけた」と言い雪玉をぶつけます。雪玉は１球しか投げれません<br>4. 雪玉が当たったらアウトになり、抜けます。<br>5. 雪玉が当たらなかったらまた隠れることができます<br>6. 鬼は続けて同じ人を探すことは出来ません、別の人を探します。※雪玉は首から下の部分に投げて当てます',4,12,'外');
 INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (81,'ろくむし','1. ロク虫は鬼たちが投げるボールを避けながら2つの場所（島）を６回行ったり来たりするゲームです<br>2. ２チームに分かれ先行と後攻を決めます。鬼は走って移動する人を狙います。この時に島にいる人に当ててもアウトにはなりません。走って移動する人たちはボールを避けながら６回行ったり来たりします。５回目の時に「ごむし」と言います<br>3. 鬼が全員当てるか６回当たらず移動できたらゲーム終了です',4,12,'外');
 INSERT IGNORE INTO plays (id, title, description, min_number,max_number,category) VALUES (83,'天下','1,ボールを高くあげます<br>2,ボールが３回地面についたらボールに触れます。<br>3,ボールを持ったら３歩まで歩けます。<br>4,当てられたら外に出ます<br>5,自分を当てた人が当たったら復活できます。<br>※自分を当てた人を覚えておきましょう。',4,12,'外');
-INSERT IGNORE INTO roles (id, name) VALUES (1, 'ROLE_GENERAL');
-INSERT IGNORE INTO roles (id, name) VALUES (2, 'ROLE_ADMIN');
-INSERT IGNORE INTO users (id, name, furigana, postal_code, address, phone_number, email, password, role_id, enabled) VALUES (1, '吉野　登真', 'ヨシノ　トウマ', '064-0801', ' 北海道札幌市中央区南1条西24丁目1-13-501号', '090-5223-9774', 'kurinn1526@icloud.com', 'hytrk1109', 1, true);
+
+
